@@ -10,13 +10,13 @@ For a more real-life example of a backend integration, see [replicache-sample-to
 
 ## Setup
 
-```
+```bash
 npm install
 ```
 
 ## Run
 
-```
+```bash
 node run
 ```
 
@@ -27,9 +27,29 @@ Your Replicache endpoints are:
 
 ### Example Usage
 
-```
+```bash
 curl -X POST -d '{"clientID":"1", "mutations":[{"id":1,"name":"foo","args":"42"}]}' -H "Content-type: application/json" http://localhost:3001/replicache-batch
 curl -X POST -d '{"clientID":"1", "mutations":[{"id":2,"name":"bar","args":"true"}]}' -H "Content-type: application/json" http://localhost:3001/replicache-batch
 
 curl -X POST -d '{"clientID":"1"}' -H "Content-type: application/json" http://localhost:3001/replicache-client-view
+```
+
+Outputs:
+
+```bash
+% node .              
+Example app listening at http://localhost:3001
+> /replicache-batch { clientID: '1', mutations: [ { id: 1, name: 'foo', args: '42' } ] }
+< /replicache-batch
+> /replicache-batch { clientID: '1', mutations: [ { id: 2, name: 'foo', args: 'true' } ] }
+< /replicache-batch
+/replicache-client-view { clientID: '1' }
+/replicache-client-view {
+  lastMutationID: 2,
+  clientView: {
+    init: 'hello world',
+    'm/0': { id: 1, name: 'foo', args: '42' },
+    'm/1': { id: 2, name: 'foo', args: 'true' }
+  }
+}
 ```
