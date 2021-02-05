@@ -17,7 +17,7 @@ npm install
 ## Run
 
 ```bash
-node run
+node .
 ```
 
 Your Replicache endpoints are:
