@@ -20,8 +20,16 @@ npm install
 node run
 ```
 
-### Exercise
+Your Replicache endpoints are:
+
+* `http://localhost:3001/replicache-client-view`
+* `http://localhost:3001/replicache-batch`
+
+### Example Usage
 
 ```
+curl -X POST -d '{"clientID":"1", "mutations":[{"id":1,"name":"foo","args":"42"}]}' -H "Content-type: application/json" http://localhost:3001/replicache-batch
+curl -X POST -d '{"clientID":"1", "mutations":[{"id":2,"name":"bar","args":"true"}]}' -H "Content-type: application/json" http://localhost:3001/replicache-batch
 
+curl -X POST -d '{"clientID":"1"}' -H "Content-type: application/json" http://localhost:3001/replicache-client-view
 ```
